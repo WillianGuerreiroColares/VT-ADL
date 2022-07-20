@@ -1,1 +1,14 @@
+### Python cache
 ./__pycache__
+*.pyc
+.idea/
+
+## Execution result
+runs/*
+saved_model/*
+
+## Dataset
+mvtec_anomaly_detection/*
+
+## Virtual Environment
+venv/

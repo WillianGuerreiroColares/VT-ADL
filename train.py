@@ -37,7 +37,8 @@ ep =0
 ssim_loss = pytorch_ssim.SSIM() # SSIM Loss
 
 #Dataset
-data = mvtech.Mvtec(args["batch_size"],product=prdt)
+_root = 'mvtec_anomaly_detection'
+data = mvtech.Mvtec(args["batch_size"],product=prdt, root=_root)
 
 # Model declaration
 model = ae(patch_size=args["patch_size"],train=True).cuda()
@@ -82,8 +83,12 @@ for i in range(epoch):
         writer.add_scalar('recon-loss', loss1.item(), i)
         writer.add_scalar('ssim loss', loss2.item(), i)
         writer.add_scalar('Gaussian loss', loss3.item(), i)
-        writer.add_histogram('Vectors', vector)
-        
+
+        try:
+            writer.add_histogram('Vectors', vector)
+        except:
+            # Willian inserted this line to verify NAN error
+            pass
         ## Uncomment below to store the distributions of pi, var and mean ##        
         # writer.add_histogram('Pi', pi)
         # writer.add_histogram('Variance', sigma)
