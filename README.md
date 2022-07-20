@@ -45,8 +45,27 @@ available annotation tool ["SuperAnnotate"](https://superannotate.com/)
 * *Gaussian noise has been added to the encoded features from the transformer for regularization.* 
 * *With Noise added the PRO score is 0.897 in contrary to 0.807 without noise.*
 
+# Setup (CUDA mode)
+Execute the following commands inside VT-ADL directory:
+
+```
+python -m venv venv
+.\venv\scripts\activate
+pip install -r requirements.txt
+pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu113
+```
+# Dataset Download 
+Download Dataset from the following website:
+```
+https://www.mvtec.com/company/research/datasets/mvtec-ad
+```
+
 # Train (Command Line)
-` python train.py -p "hazelnut" `
+Execute the following commands inside VT-ADL directory:
+
+```
+python train.py -p "hazelnut"
+```
 
 # Cite
 If you use this dataset, please cite it using the following reference:
